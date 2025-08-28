@@ -1,11 +1,11 @@
 import { Locator, Page } from "@playwright/test";
 
 export class HeaderFragment {
-    page: Page;
-    navMenu: Locator;
-    signInButton: Locator;
-    homeButton: Locator;
-    contactButton: Locator;
+    readonly page: Page;
+    readonly navMenu: Locator;
+    readonly signInButton: Locator;
+    readonly homeButton: Locator;
+    readonly contactButton: Locator;
 
 
  constructor(page: Page) {
@@ -16,15 +16,15 @@ export class HeaderFragment {
     this.contactButton = page.getByTestId("nav-contact");
  }
 
- async openLoginPage() {
+ async openLoginPage(): Promise<void> {
     await this.signInButton.click();
   }
 
- async openHomePage() {
+ async openHomePage(): Promise<void> {
     await this.homeButton.click();
   }
 
- async openContactPage() {
+ async openContactPage(): Promise<void> {
     await this.contactButton.click();
   }
 

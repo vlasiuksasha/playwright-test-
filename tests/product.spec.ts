@@ -2,7 +2,7 @@ import { test, expect } from '@playwright/test';
 import { HomePage } from '../pages/home.page';
 
 test.beforeEach(async ({ page }) => {
-  await page.goto('https://practicesoftwaretesting.com');
+  await page.goto('/');
   await page.getByAltText("Combination Pliers").click();
   await expect(page).toHaveURL(/\/product/);
 });

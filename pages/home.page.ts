@@ -15,7 +15,7 @@ export class HomePage {
         this.productPrice = page.getByTestId("unit-price");
     }
 
-    async goto() {
+    async goto(): Promise<void> {
         await this.page.goto("/"); 
       }
 }

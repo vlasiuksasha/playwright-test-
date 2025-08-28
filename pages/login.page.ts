@@ -22,7 +22,7 @@ export class LoginPage {
     await this.loginButton.click();
   }
 
-  async goto() {
+  async goto(): Promise<void> {
     await this.page.goto("/"); 
     await this.header.openLoginPage();
   }
