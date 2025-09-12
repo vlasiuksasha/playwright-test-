@@ -6,6 +6,8 @@ export class HeaderFragment {
     readonly signInButton: Locator;
     readonly homeButton: Locator;
     readonly contactButton: Locator;
+    readonly cartButton: Locator;
+    readonly cartBudge: Locator;
 
 
  constructor(page: Page) {
@@ -14,6 +16,8 @@ export class HeaderFragment {
     this.signInButton = page.getByTestId("nav-sign-in");
     this.homeButton = page.getByTestId("nav-home");
     this.contactButton = page.getByTestId("nav-contact");
+    this.cartButton = page.getByTestId("nav-cart");
+    this.cartBudge = page.getByTestId("cart-quantity");
  }
 
  async openLoginPage(): Promise<void> {
