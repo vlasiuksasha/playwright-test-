@@ -1,5 +1,6 @@
-import { test, expect } from '@playwright/test';
-import { HomePage } from '../pages/home.page';
+import { expect } from '@playwright/test';
+import { test } from '../fixtures';
+
 
 test.beforeEach(async ({ page }) => {
   await page.goto('/');
@@ -7,14 +8,12 @@ test.beforeEach(async ({ page }) => {
   await expect(page).toHaveURL(/\/product/);
 });
 
-test('Product name is correct', async ({ page }) => {
-  const homePage = new HomePage(page);
-  await expect(homePage.productName).toHaveText("Combination Pliers");
+test('Product name is correct', async ({ app }) => {
+  await expect(app.homePage.productName).toHaveText("Combination Pliers");
 });
 
-test('Product price is correct', async ({ page }) => {
-  const homePage = new HomePage(page);
-  await expect(homePage.productPrice).toContainText("14.15");
+test('Product price is correct', async ({ app }) => {
+  await expect(app.homePage.productPrice).toContainText("14.15");
 });
 
 test('Buttons are visible', async ({ page }) => {

@@ -1,10 +1,8 @@
-import { test, expect } from '@playwright/test';
-import { LoginPage } from '../pages/login.page';
+import { expect } from '@playwright/test';
+import { test } from '../fixtures';
 import path from 'path';
 
-
 const authFile = path.join(__dirname, '../playwright/.auth/user.json');
-
 
 const user = {
   email: 'customer@practicesoftwaretesting.com',
@@ -12,13 +10,11 @@ const user = {
   name: 'Jane Doe'
 };
 
-test('Verify successful login', async ({ page }) => {
-  const loginPage = new LoginPage(page); 
-  await loginPage.goto()
-  await loginPage.performLogin(user.email, user.password);
+test('Verify successful login', async ({ app, page }) => {
+  await app.loginPage.goto()
+  await app.loginPage.performLogin(user.email, user.password);
 
   await expect(page).toHaveURL(/\/account/);
 
   await page.context().storageState({ path: authFile });
-
 });
