@@ -8,15 +8,12 @@ const user = {
   name: 'Jane Doe'
 };
 
+test.skip(process.env.CI, 'Test is skipped in CI due to the Cloudflare protection.');
+
 
 test('Verify successful login', async ({ page, app }) => {
   await app.loginPage.goto()
   await app.loginPage.performLogin(user.email, user.password);
-  
-  if (await page.locator('text=Verify you are human').isVisible({ timeout: 3000 })) {
-    console.warn('⚠️ Cloudflare verification page detected. Skipping...');
-    test.skip(true, 'Cloudflare challenge appeared — cannot continue test');
-  }
 
   await expect(page).toHaveURL(/\/account/);
   await app.accountPage.verifyLoggedInUser('Jane Doe');

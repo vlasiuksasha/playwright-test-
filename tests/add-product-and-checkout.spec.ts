@@ -13,6 +13,9 @@ const cardCredentials = {
     cardholderName: 'Test User',
 }
 
+test.skip(process.env.CI, 'Test is skipped in CI due to the Cloudflare protection.');
+ 
+
 test.describe.serial('Verify user can add product to cart and buy this product',  () => {      
     
     test.beforeEach(async ({ page, loggedInApp }) => {
