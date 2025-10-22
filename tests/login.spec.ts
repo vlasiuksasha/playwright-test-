@@ -13,6 +13,6 @@ test('Verify successful login', async ({ page, app }) => {
   await app.loginPage.performLogin(user.email, user.password);
 
   await expect(page).toHaveURL(/\/account/);
-  await expect(app.loginPage.header.navMenu).toContainText('Jane Doe');
+  await app.accountPage.verifyLoggedInUser('Jane Doe');
   await expect(app.accountPage.titlePage).toContainText('My account');
 });
