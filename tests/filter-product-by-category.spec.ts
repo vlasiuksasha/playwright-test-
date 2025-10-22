@@ -14,7 +14,7 @@ test('Verify that products are filtered by category (Sander)', async ({ page, ap
     await app.homePage.checkAndWaitforResponse();
 
     const productNames = await app.homePage.getAllTextContents(app.homePage.productName);
-    for (const i of productNames) {
-      expect(i).toContain(PowerTools.Sander);
+    for (const productName of productNames) {
+      expect(productName).toContain(PowerTools.Sander);
     }
   });

@@ -1,22 +1,17 @@
 import { expect } from '@playwright/test';
 import { test } from '../fixtures';
+import { cardCredentials } from '../pages/test-data/card.data';
 
 const firstProduct = {
     productName: 'Combination Pliers',
     productPrice: '14.15',
   };
 
-const cardCredentials = {
-    cardNumber: '1111-1111-1111-1111',
-    expirationDate: '01/2026',
-    securityCode: '111',
-    cardholderName: 'Test User',
-}
 
 test.skip(process.env.CI, 'Test is skipped in CI due to the Cloudflare protection.');
  
 
-test.describe.serial('Verify user can add product to cart and buy this product',  () => {      
+test.describe('Verify user can add product to cart and buy this product',  () => {      
     
     test.beforeEach(async ({ page, loggedInApp }) => {
         await expect(loggedInApp.page).toHaveURL(/\/account/, { timeout: 10000 });

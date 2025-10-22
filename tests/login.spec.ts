@@ -1,4 +1,3 @@
-/* eslint-disable playwright/no-conditional-in-test */
 import { expect } from '@playwright/test';
 import { test } from '../fixtures';
 
