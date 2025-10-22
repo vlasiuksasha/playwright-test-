@@ -43,6 +43,8 @@ export default defineConfig({
     {
       name: 'chromium',
       use: { 
+        headless: true,
+      userAgent: 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 Chrome/115 Safari/537.36',
         //storageState: 'playwright/.auth/user.json',
         ...devices['Desktop Chrome'] },
       //dependencies: ['auth'],
@@ -51,7 +53,10 @@ export default defineConfig({
     {
       name: 'firefox',
       use: {
-        //storageState: 'playwright/.auth/user.json',
+        headless: true,
+      userAgent: 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 Chrome/115 Safari/537.36',
+        //storageState
+        // : 'playwright/.auth/user.json',
         ...devices['Desktop Firefox'] },
       //dependencies: ['auth'],
     },
