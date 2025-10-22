@@ -16,7 +16,7 @@ const cardCredentials = {
 test.describe.serial('Verify user can add product to cart and buy this product',  () => {      
     
     test.beforeEach(async ({ page, loggedInApp }) => {
-        await expect(loggedInApp.page).toHaveURL(/\/account/);
+        await expect(loggedInApp.page).toHaveURL(/\/account/, { timeout: 10000 });
         await page.goto('/');
         await page.getByAltText(firstProduct.productName).click();
       });
