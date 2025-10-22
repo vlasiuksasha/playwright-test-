@@ -17,6 +17,7 @@ export class AccountPage {
 
     async verifyLoggedInUser(expectedName: string): Promise<void> {
       await this.navLocator.waitFor({ state: 'visible', timeout: 20000 });
+      await expect(this.navLocator).toBeVisible({ timeout: 10000 });
       await expect(this.navLocator).toContainText(expectedName);
     }
 
