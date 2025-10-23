@@ -31,7 +31,10 @@ export default defineConfig({
 
     /* Collect trace when retrying the failed test. See https://playwright.dev/docs/trace-viewer */
     trace: 'on-first-retry',
-    testIdAttribute: 'data-test'
+    testIdAttribute: 'data-test',
+    headless: true,
+  viewport: { width: 1280, height: 720 },
+  launchOptions: { slowMo: 100 },
   },
 
   /* Configure projects for major browsers */
@@ -40,25 +43,30 @@ export default defineConfig({
     {
       name: 'chromium',
       use: { 
-        storageState: 'playwright/.auth/user.json',
+        headless: true,
+      userAgent: 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 Chrome/115 Safari/537.36',
+        //storageState: 'playwright/.auth/user.json',
         ...devices['Desktop Chrome'] },
-      dependencies: ['auth'],
+      //dependencies: ['auth'],
     },
 
     {
       name: 'firefox',
       use: {
-        storageState: 'playwright/.auth/user.json',
+        headless: true,
+      userAgent: 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 Chrome/115 Safari/537.36',
+        //storageState
+        // : 'playwright/.auth/user.json',
         ...devices['Desktop Firefox'] },
-      dependencies: ['auth'],
+      //dependencies: ['auth'],
     },
 
     {
       name: 'webkit',
       use: {
-        storageState: 'playwright/.auth/user.json',
+       // storageState: 'playwright/.auth/user.json',
         ...devices['Desktop Safari'] },
-      dependencies: ['auth'],
+      //dependencies: ['auth'],
     },
 
     /* Test against mobile viewports. */

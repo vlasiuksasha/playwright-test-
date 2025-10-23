@@ -1,13 +1,20 @@
-import { test, expect } from '@playwright/test';
-import { HomePage } from '../pages/home.page'; 
+import { expect } from '@playwright/test';
+import { test } from '../fixtures';
+
+enum PowerTools {
+  Grinder = 'Grinder',
+  Sander = 'Sander',
+  Saw = 'Saw',
+  Drill = 'Drill',
+}
 
 
-test('Verify that products are filtered by category (Sander)', async ({ page }) => {
-    const homePage = new HomePage(page);
+test('Verify that products are filtered by category (Sander)', async ({ page, app }) => {
     await page.goto('/');
-    await homePage.filterBySubCategory('Sander')
-    const productNames = await homePage.getProductNames();
-    for (const name of productNames) {
-      expect(name.toLowerCase()).toContain('sander');
+    await app.homePage.checkAndWaitforResponse();
+
+    const productNames = await app.homePage.getAllTextContents(app.homePage.productName);
+    for (const productName of productNames) {
+      expect(productName).toContain(PowerTools.Sander);
     }
   });
