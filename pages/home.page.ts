@@ -18,8 +18,7 @@ export class HomePage {
         this.sortButton = page.getByTestId("sort");
         this.sortNameAsc = page.locator('[value="name,asc"]');
         this.sortNameDes = page.locator('[value="name,desc"]');
-        this.sanderCheckbox = this.page.getByRole('checkbox', { name: 'Sander' });
-      
+        this.sanderCheckbox = this.page.getByRole('checkbox', { name: 'Sander' });      
 
     }
 

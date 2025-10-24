@@ -10,16 +10,11 @@ const firstProduct = {
 
 test.skip(process.env.CI, 'Test is skipped in CI due to the Cloudflare protection.');
  
-
-test.describe('Verify user can add product to cart and buy this product',  () => {      
-    
-    test.beforeEach(async ({ page, loggedInApp }) => {
-        await expect(loggedInApp.page).toHaveURL(/\/account/, { timeout: 10000 });
+    test('Verify that product should be added to the cart', async ({ app, page, loggedInApp }) => { 
+        await expect(loggedInApp.page).toHaveURL(/\/account/);
         await page.goto('/');
         await page.getByAltText(firstProduct.productName).click();
-      });
 
-    test('Verify that product should be added to the cart', async ({ app, page }) => { 
         await app.productPage.addToCartButton.click()
         await expect(app.productPage.addCartAlert).toBeVisible();
         await expect(app.productPage.addCartAlert).toContainText("Product added to shopping cart");
@@ -45,6 +40,5 @@ test.describe('Verify user can add product to cart and buy this product',  () =>
 
         await app.checkoutPage.finishButton.click();
         await expect(app.checkoutPage.finishCheckoutMessage).toBeVisible();        
-    })
-
-});
+    });
+    
